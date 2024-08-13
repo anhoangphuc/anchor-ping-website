@@ -1,0 +1,942 @@
+{
+    "version": "0.1.0",
+    "name": "voucher_nft",
+    "instructions": [
+      {
+        "name": "initialize",
+        "accounts": [
+          {
+            "name": "config",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "relendCollection",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "authorityTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "metadataAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "masterEdition",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "admin",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "tokenMetadataProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "params",
+            "type": {
+              "defined": "MetadataParams"
+            }
+          }
+        ]
+      },
+      {
+        "name": "addVault",
+        "accounts": [
+          {
+            "name": "config",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "vault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "admin",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "seed",
+            "type": "string"
+          },
+          {
+            "name": "operator",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "mintVoucher",
+        "accounts": [
+          {
+            "name": "config",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "vault",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "mint",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "vaultTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "metadataAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "masterEdition",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMint",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMetadataAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMasterEdition",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "tokenMetadataProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "params",
+            "type": {
+              "defined": "MetadataParams"
+            }
+          }
+        ]
+      },
+      {
+        "name": "addVoucherRepayDebtInformation",
+        "accounts": [
+          {
+            "name": "vault",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "mint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "metadataAccount",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "masterEdition",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "repayDebtVoucher",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "tokenMetadataProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "params",
+            "type": {
+              "defined": "AddRepayDebtVoucherParams"
+            }
+          }
+        ]
+      },
+      {
+        "name": "sendVoucher",
+        "accounts": [
+          {
+            "name": "vault",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "user",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "mint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "masterEdition",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "vaultTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "operatorAddCampaign",
+        "accounts": [
+          {
+            "name": "vault",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "campaign",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "params",
+            "type": {
+              "defined": "AddCampaignParams"
+            }
+          }
+        ]
+      },
+      {
+        "name": "operatorAddEligibleUsers",
+        "accounts": [
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "campaign",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "eligibleUsers",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u8"
+          }
+        ]
+      },
+      {
+        "name": "operatorDeactiveCampaign",
+        "accounts": [
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "campaign",
+            "isMut": true,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "userClaimNft",
+        "accounts": [
+          {
+            "name": "config",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "vault",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "operator",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "authority",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "campaign",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "mint",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "userTokenAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "metadataAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "masterEdition",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMint",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMetadataAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "collectionMasterEdition",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "repayDebtVoucher",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "eligibleUsers",
+            "isMut": true,
+            "isSigner": false,
+            "docs": [
+              "CHECK"
+            ]
+          },
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "tokenMetadataProgram",
+            "isMut": false,
+            "isSigner": false,
+            "docs": [
+              "CHECK THE TOKEN METADATA PROGRAM"
+            ]
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "associatedTokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      }
+    ],
+    "accounts": [
+      {
+        "name": "Authority",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "bump",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Campaign",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "campaignId",
+              "type": "u64"
+            },
+            {
+              "name": "maximumAmount",
+              "type": "u64"
+            },
+            {
+              "name": "startTime",
+              "type": "i64"
+            },
+            {
+              "name": "endTime",
+              "type": "i64"
+            },
+            {
+              "name": "market",
+              "type": "publicKey"
+            },
+            {
+              "name": "operator",
+              "type": "publicKey"
+            },
+            {
+              "name": "discountPercentage",
+              "type": "u8"
+            },
+            {
+              "name": "isAll",
+              "type": "bool"
+            },
+            {
+              "name": "isActive",
+              "type": "bool"
+            },
+            {
+              "name": "reserveField",
+              "type": {
+                "array": [
+                  "u128",
+                  6
+                ]
+              }
+            },
+            {
+              "name": "eligibleTokens",
+              "type": {
+                "vec": "publicKey"
+              }
+            },
+            {
+              "name": "uri",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "symbol",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "EligibleUsers",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "amount",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Config",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "admin",
+              "type": "publicKey"
+            },
+            {
+              "name": "collection",
+              "type": "publicKey"
+            },
+            {
+              "name": "reserve",
+              "type": {
+                "array": [
+                  "u128",
+                  6
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Vault",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "admin",
+              "type": "publicKey"
+            },
+            {
+              "name": "operator",
+              "type": "publicKey"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "seed",
+              "type": "string"
+            },
+            {
+              "name": "reserve",
+              "type": {
+                "array": [
+                  "u128",
+                  6
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "RepayDebtVoucher",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "discountPercentage",
+              "type": "u8"
+            },
+            {
+              "name": "maximumAmount",
+              "type": "u64"
+            },
+            {
+              "name": "startTime",
+              "type": "i64"
+            },
+            {
+              "name": "endTime",
+              "type": "i64"
+            },
+            {
+              "name": "nftMint",
+              "type": "publicKey"
+            },
+            {
+              "name": "authority",
+              "type": "publicKey"
+            },
+            {
+              "name": "market",
+              "type": "publicKey"
+            },
+            {
+              "name": "isAll",
+              "type": "bool"
+            },
+            {
+              "name": "reserveField",
+              "type": {
+                "array": [
+                  "u8",
+                  15
+                ]
+              }
+            },
+            {
+              "name": "reserve",
+              "type": {
+                "array": [
+                  "u128",
+                  3
+                ]
+              }
+            },
+            {
+              "name": "eligibleTokens",
+              "type": {
+                "vec": "publicKey"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "types": [
+      {
+        "name": "AddRepayDebtVoucherParams",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "discountPercentage",
+              "type": "u8"
+            },
+            {
+              "name": "maximumAmount",
+              "type": "u64"
+            },
+            {
+              "name": "startTime",
+              "type": "i64"
+            },
+            {
+              "name": "endTime",
+              "type": "i64"
+            },
+            {
+              "name": "market",
+              "type": "publicKey"
+            },
+            {
+              "name": "isAll",
+              "type": "bool"
+            },
+            {
+              "name": "eligibleTokens",
+              "type": {
+                "vec": "publicKey"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "AddCampaignParams",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "campaignId",
+              "type": "u64"
+            },
+            {
+              "name": "discountPercentage",
+              "type": "u8"
+            },
+            {
+              "name": "maximumAmount",
+              "type": "u64"
+            },
+            {
+              "name": "startTime",
+              "type": "i64"
+            },
+            {
+              "name": "endTime",
+              "type": "i64"
+            },
+            {
+              "name": "market",
+              "type": "publicKey"
+            },
+            {
+              "name": "isAll",
+              "type": "bool"
+            },
+            {
+              "name": "eligibleTokens",
+              "type": {
+                "vec": "publicKey"
+              }
+            },
+            {
+              "name": "uri",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "symbol",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "MetadataParams",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "symbol",
+              "type": "string"
+            },
+            {
+              "name": "uri",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "VoucherNftError",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "OnlyAdmin"
+            },
+            {
+              "name": "OnlyOperator"
+            },
+            {
+              "name": "InvalidAccountArgument"
+            },
+            {
+              "name": "AccountIsNotInitialized"
+            },
+            {
+              "name": "AuthorityIsNotSigned"
+            },
+            {
+              "name": "VaultIsNotSigned"
+            },
+            {
+              "name": "InvalidDiscountPercentage"
+            },
+            {
+              "name": "InvalidMaximumAmount"
+            },
+            {
+              "name": "StartTimeAfterEndTime"
+            },
+            {
+              "name": "StartTimeBeforeCurrentTime"
+            },
+            {
+              "name": "InvalidNftMint"
+            },
+            {
+              "name": "CampaignNotActive"
+            }
+          ]
+        }
+      },
+      {
+        "name": "UseMethod",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "Burn"
+            },
+            {
+              "name": "Multiple"
+            },
+            {
+              "name": "Single"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CollectionDetails",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "V1",
+              "fields": [
+                {
+                  "name": "size",
+                  "type": "u64"
+                }
+              ]
+            },
+            {
+              "name": "V2",
+              "fields": [
+                {
+                  "name": "padding",
+                  "type": {
+                    "array": [
+                      "u8",
+                      8
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
